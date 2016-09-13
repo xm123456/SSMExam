@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sakila.MybatisImpl.CustomerDaoImpl">
+    <resultMap type="com.sakila.Entity.Customer" id="resultListCustomer">
+        <id column="customer_id" property="customer_id" />
+        <result column="store_id" property="store_id" />
+        <result column="first_name" property="first_name" />
+        <result column="last_name" property="last_name" />
+        <result column="email" property="email" />
+        <result column="address_id" property="address_id" />
+        <result column="active" property="active" />
+        <result column="create_date" property="create_date" />
+        <result column="last_update" property="last_update" />
+    </resultMap>
+    <select id="getByID_Customer" parameterType="long" resultType="com.sakila.Entity.Customer">
+        select * from customer where customer_id = #{ID}
+    </select>
+    <select id="delByID_Customer" parameterType="long" >
+       delete from customer where customer_id=#{ID}
+    </select>
+    <select id="ModifyIdEntity_Customer" parameterType="com.sakila.Entity.Customer">
+        update customer set store_id=#{store_id},last_update=#{last_update},address_id=#{address_id},last_name=#{last_name},active=#{active},create_date=#{create_date},first_name=#{first_name},email=#{email}where customer_id=#{customer_id}
+    </select>
+    <select id="AddIdEntity_Customer" parameterType="com.sakila.Entity.Customer" >
+        insert into  customer(store_id,last_update,address_id,last_name,active,create_date,first_name,email) values(#{store_id},#{last_update},#{address_id},#{last_name},#{active},#{create_date},#{first_name},#{email})
+    </select>
+    <select id="getByFirstName_Customer" resultMap="resultListCustomer" >
+       select * from customer where first_name=#{first_name}
+    </select>
+    <select id="getCustomerInPage_Customer" resultMap="resultListCustomer" parameterType="hashmap">
+        SELECT * FROM customer WHERE customer_id >= (SELECT customer_id FROM customer ORDER BY customer_id LIMIT #{startFrom}, 1) LIMIT #{howMany}
+    </select>
+    <select id="getCustomerCount_Customer" resultType="int">
+        select count(*) from customer
+    </select>
+</mapper>

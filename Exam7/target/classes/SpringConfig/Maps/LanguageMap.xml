@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sakila.MybatisImpl.LanguageDaoImpl">
+    <resultMap type="com.sakila.Entity.Language" id="resultListLanguage">
+		<id column="language_id" property="language_id" />
+		<result column="name" property="name" />
+		<result column="last_update" property="last_update" />
+	</resultMap>
+    <select id="getByID_Language" parameterType="long" resultType="com.sakila.Entity.Language">
+        select * from language where language_id=#{ID}
+    </select>
+    <select id="selectAllLanguage_Language" resultMap="resultListLanguage">
+	   select * from language
+	</select>
+</mapper>

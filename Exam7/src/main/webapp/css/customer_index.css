@@ -1,0 +1,24 @@
+#Title{
+    border-bottom:solid 1px #aaaaaa ;
+}
+.pad {
+    margin-right: 40%;
+}
+#this-panal-head{
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-color: transparent;
+    background-image: none;
+    border-top: solid turquoise 2px;
+}
+.container{
+    width: 96%;
+    margin:auto;
+}
+.pagination li {
+    float: left;
+    margin-right: 2px;
+}
+.red-word{
+	color: red;
+}

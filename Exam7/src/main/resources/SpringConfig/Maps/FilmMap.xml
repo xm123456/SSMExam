@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sakila.MybatisImpl.FilmDaoImpl">
+    <resultMap type="com.sakila.Entity.Film" id="resultListFilm">
+        <id column="film_id" property="film_id" />
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+        <result column="release_year" property="release_year" />
+        <result column="language_id" property="language_id" />
+        <result column="original_language_id" property="original_language_id" />
+        <result column="rental_duration" property="rental_duration" />
+        <result column="rental_rate" property="rental_rate" />
+        <result column="length" property="length" />
+        <result column="replacement_cost" property="replacement_cost" />
+        <result column="rating" property="rating" />
+        <result column="special_features" property="special_features" />
+        <result column="last_update" property="last_update" />
+    </resultMap>
+    <select id="getByID_Film" parameterType="long" resultType="com.sakila.Entity.Film">
+        select * from film where film_id = #{ID}
+    </select>
+    <select id="delByID_Film" parameterType="long" >
+       delete from film where film_id=#{ID}
+    </select>
+    <select id="ModifyIdEntity_Film" parameterType="com.sakila.Entity.Film">
+        update film set title=#{title},description=#{description},release_year=#{release_year},language_id=#{language_id},original_language_id=#{original_language_id},rental_duration=#{rental_duration},rental_rate=#{rental_rate},length=#{length},replacement_cost=#{replacement_cost},rating=#{rating},special_features=#{special_features},last_update=#{last_update} where film_id=#{ID}
+    </select>
+    <select id="AddIdEntity_Film" parameterType="com.sakila.Entity.Film" >
+        insert into film(title,description,release_year,language_id,original_language_id,rental_duration,rental_rate,length,replacement_cost,rating,special_features,last_update) values(#{title},#{description},#{release_year},#{language_id},#{original_language_id},#{rental_duration},#{rental_rate},#{length},#{replacement_cost},#{rating},#{special_features},#{last_update})
+    </select>
+    <select id="getAllFilm_Film" resultMap="resultListFilm" >
+        select * from film
+    </select>
+    <select id="getFilmInPage_Film" resultMap="resultListFilm" parameterType="hashmap">
+        select * from film where film_id >= (select film_id from film limit #{startFrom}, 1) limit #{howMany}
+    </select>
+    <select id="getFilmCount_Film" resultType="int">
+        select count(*) from film
+    </select>
+</mapper>

@@ -1,0 +1,14 @@
+#body-context{
+    margin-top: 50px;
+    height: 600px;
+}
+#body-context-left{
+    float: left;
+    width: 12%;
+    border-right:1px solid #888888 ;
+    height: 100%;
+}
+#body-context-right{
+    float: left;
+    width:88%;
+}

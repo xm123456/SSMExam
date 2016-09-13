@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sakila.MybatisImpl.AddressDaoSp">
+    <resultMap type="com.sakila.Entity.Address" id="resultListAddress">
+        <id column="address_id" property="address_id" />
+        <result column="address" property="address" />
+        <result column="address2" property="address2" />
+        <result column="district" property="district" />
+        <result column="city_id" property="city_id" />
+        <result column="postal_code" property="postal_code" />
+        <result column="phone" property="phone" />
+        <result column="last_update" property="last_update" />
+    </resultMap>
+    <select id="getByID_Address" parameterType="long" resultType="com.sakila.Entity.Address">
+        select * from address where address_id = #{ID}
+    </select>
+    <delete id="delByID_Address" parameterType="long" >
+       delete from address where address_id=#{ID}
+    </delete>
+    <select id="getCountById_Address" parameterType="long" resultType="int">
+       select count(*) from address where address_id=#{ID}
+    </select>
+    <select id="getAllAddress_Address" resultMap="resultListAddress" >
+        select * from address
+    </select>
+</mapper>

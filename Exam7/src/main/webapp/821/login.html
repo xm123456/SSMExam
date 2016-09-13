@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/login.js"></script>
+</head>
+<body>
+    <div id="bg" class="login_bg" >
+        <span id="Title">
+            <img src="../img/Title.png" style="width:50px;height: 50px ;">
+                <span style="margin-top: 1em" ></span>
+            <h3 style="display: inline" >11550 熊敏</h3>
+        </span>
+    </div>
+    <div class="modal fade" id="loginmodal" style="position: absolute; top: 25%;" data-backdrop="false">
+        <div class="modal-dialog modal-lg" style="width: 50%;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">电影租赁管理系统</h4>
+                </div>
+                <div class="modal-body"  style="width: 70%;margin:0 auto;">
+                    <form action="/SpringMVCExam/login/do_login" method="post" name="loginForm">
+                        <div class="form-group-sm">
+                            <table class="table  table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td class="input_lable">用户名</td>
+                                    <td>
+                                        <div class="input-group">
+                                            <input type="text" name="name" class="form-control" placeholder="请输入用户名">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td  class="input_lable">密码</td>
+                                    <td>
+                                        <span class="input-group">
+                                            <input type="password" name="password" class="form-control" placeholder="随便写">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center">
+                                        <input type="reset" class="btn btn-default btn-sm" value="重置" style="margin-right: 2em;">
+                                        <input type="submit" class="btn btn-info btn-sm" value="提交" onclick="return check(this);">
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</body>
+</html>
+
